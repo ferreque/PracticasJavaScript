@@ -1,0 +1,40 @@
+Algoritmos
+
+A- Hacer empanadas:
+Resultado esperado--> N° ricas empanadas de carne!
+Datos de entrada: recetas ---> X gramos de cada ingrediente (tapitas de empanada, matambre, grasa/aceite, cebolla, cebolla de verdeo, huevo, sal pimienta, aji molido, pimentón, comino).
+Procesos necesarios:
+1-Conseguir y pesar ingredientes necesarios.
+2-Disolver caldo en agua hirviendo y agregar matambre 90min.
+3-Desgrasar matambre.
+4-Cortar matambre en cuadritos pequeños.
+5-Limpiar y picar las cebollas de verdeo.
+7-Derretir en una cacerola la grasa.
+8-Rehogar la cebolla común hasta que esté tierna. Retirarla del fuego y agregar la cebollita de verdeo picada, sal, pimienta, pimentón, comino.
+9-Agregar 2 tazas del caldo y llevar al fuego, incorporar el matambre cortadito.
+10-Hervir todo junto unos minutos. Tapar, dejar enfriar en la heladera hasta el día siguiente.
+11-Hervir huevos 10min.
+12-Rellenar tapitas de empanadas con la mezcla fría, poner un poco de huevo duro picado y cerrar las empanadas con 13 repulgues.
+13-Quiero las empanadas cocidas?
+	a. SI: (ir al paso 14) - NO: (FIN)
+14-Quiero empanadas un poco mas fit?
+	a. SI: (ir al paso 15) - NO: (ir al paso 17)
+15-Colocar en asaderas previamente engrasadas y hornear a fuego fuerte 20 min.
+16-FIN.
+17-Freír 10 min en aceite.
+18-FIN.
+
+B-Indicar si un numero es par:
+Resultado esperado--> Mensaje que diga: par o impar según corresponda.
+Datos de entrada--> Numero.
+Procesos necesarios:
+1-Ingreso numero.
+2-Es un numero entero?
+	a. SI: (ir al paso 3) - NO: (vuelvo al paso 1)
+3-Divido el numero en 2.
+4-El resultado es un numero entero?
+	a. SI: (ir al paso 5) - NO: (ir al paso 7)
+5-Devulvo mensaje: PAR.
+6-FIN.
+7-Devuelvo mensaje: IMPAR.
+8-FIN.
