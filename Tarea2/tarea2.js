@@ -4,7 +4,11 @@ console.log(`Se puede capitalizar asi: ${nombre.charAt(0).toUpperCase() + nombre
 let primerCaracter=nombre.charAt(0)
 console.log(`O asi: ${primerCaracter.toUpperCase() + nombre.substr(1)}`)
 
-console.log(Math.max(1, 156, -48))
-console.log(Math.min(1, 156, -48))
+let num1=1
+let num2=156
+let num3= -48
 
-console.log(Math.sqrt(156))
+console.log(Math.max(num1, num2, num3))
+console.log(Math.min(num1, num2, num3))
+
+console.log(Math.sqrt(num2))
