@@ -37,17 +37,29 @@ let valor1 = parseInt(prompt("Ingrese un numero"));
 let valor2 = parseInt(prompt("Ingrese otro numero"));
 let operación = prompt('Ingrese la operacion que desea realizar: (+, -, *, /)')
 
-if (isNaN(valor1) && isNaN(valor2)) {
-  valor1 = 0;
-  valor2 = 0;
-} else if (valor1 !== NaN && isNaN(valor2)) {
-  valor2 = 0;
-} else if (isNaN(valor1) && valor2 !== NaN) {
-  valor1 = 0;
+
+//OTRA FORMA
+
+
+// if (isNaN(valor1) && isNaN(valor2)) {
+//   valor1 = 0;
+//   valor2 = 0;
+// } else if (valor1 !== NaN && isNaN(valor2)) {
+//   valor2 = 0;
+// } else if (isNaN(valor1) && valor2 !== NaN) {
+//   valor1 = 0;
+// }
+
+
+//-------------------------
+
+if (isNaN(valor1)){
+  valor1=0;
+}
+if(isNaN(valor2)){
+  valor2=0;
 }
 
-// console.log(valor1);
-// console.log(valor2);
 
 switch (operación) {
     case '+':
