@@ -10,7 +10,10 @@ class Producto{
         this.precio = precio;
     }
     imprimeDatos(){
-        document.write(`Código: ${this.codigo} <br> Nombre: ${this.nombre} <br> Precio: $${this.precio} <br>----------------------------------<br>`)
+        document.write(`Código: ${this.codigo} <br> 
+        Nombre: ${this.nombre} <br> 
+        Precio: $${this.precio} <br>
+        ----------------------------------<br>`)
     }
 }
 
@@ -21,5 +24,5 @@ let producto3 = new Producto('Dgth8565', 'Antiparras polar', 4599);
 let productos = [producto1, producto2, producto3];
 
 for (i of productos){
-    document.write(i.imprimeDatos())
+    console.log(i.imprimeDatos())
 }
