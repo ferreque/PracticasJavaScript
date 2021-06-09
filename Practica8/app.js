@@ -12,107 +12,77 @@ agendaLlena(): indica si la agenda está llena.
 huecosLibres(): indica cuántos contactos más podemos ingresar.
 Usar LocalStorage para guardar la info de la agenda y para consultar sus datos*/
 
-let agendaTelefonica = JSON.parse(localStorage.getItem('contactos')) || [];
+let agenda = JSON.parse(localStorage.getItem('contactos')) || []
+let memoriaMax = 10
 
 class Contacto{
-    constructor(nombre, telefono){
+    constructor (nombre, telefono){
         this.nombre = nombre
         this.telefono = telefono
     }
 }
 
-
 function aniadirContacto(){
-    if(agendaTelefonica.length<10){
-    nombre = prompt('Nombre del contacto').toUpperCase()
-    for(i of agendaTelefonica){
-        if (i.nombre.includes(nombre)){
-            return console.log(`${i.nombre} ya existe entre tus contactos`);
-        }
+    if (agenda.length < memoriaMax){
+    nombre = prompt('Nombre del contacto a añadir').toUpperCase().trim()
+    let existe = agenda.find(function(contacto){
+        return contacto.nombre === nombre
+    });
+    if (existe){
+        console.log(`${nombre} ya se encuentra entre sus contactos`);
+    } else {
+        telefono = prompt('Teléfono del contacto')
+        agenda.push(new Contacto (nombre, telefono))
+        localStorage.setItem('contactos', JSON.stringify(agenda))
+        console.log(`Le quedan ${10 - agenda.length} espacios en la agenda`);
     }
-    telefono = prompt('Número del contacto');
-    agendaTelefonica.push(new Contacto(nombre, telefono))
-    localStorage.setItem('contactos', JSON.stringify(agendaTelefonica))
 } else{
-    console.log('Su agenda esta llena');
+    console.log('No le queda espacio en su agenda telefónica');
 }
 }
 
+function existeContacto(){
+    nombre = prompt('Nombre del contacto que desea verificar').toUpperCase().trim()
+    let existe = agenda.find(function(contacto){
+        return contacto.nombre === nombre
+    });
+    if (existe){
+        console.log(`${nombre} ya se encuentra entre sus contactos`);
+    } else {
+        console.log('El contacto no existe');
+    }
 
-
-// Listar TODOS
+}
 
 function listarContactos(){
-    agendaTelefonica.forEach(function(contacto){
-        document.write(`Nombre: ${contacto.nombre}<br>Teléfono: ${contacto.telefono}<br> ==============================<br>`)
+    agenda.forEach(function(contacto){
+        document.write(`Nombre: ${contacto.nombre} <br> Teléfono: ${contacto.telefono}<br> ==========================<br>`);
     })
 }
-// Buscar contacto
-function buscarContacto(nombre= prompt('Ingrese el nombre de el contacto que desea buscar').toUpperCase()){
 
-    let contact = agendaTelefonica.find(function(contacto){
+function buscarContacto(){
+    nombre = prompt('Nombre del contacto buscado').toUpperCase().trim()
+    let existe = agenda.find(function(contacto){
         return contacto.nombre === nombre
-    })
-    if(contact){
-        document.write(`Nombre: ${contact.nombre}<br>Teléfono: ${contact.telefono}<br> ==============================<br>`)
-    } else {
-        document.write('El contacto es inexistente')
-    }
-}
-//ELIMINAR
-function eliminarContacto(contacto = prompt('Ingrese el nombre de el contacto que desea eliminar').toUpperCase()) {
-    let idUser = agendaTelefonica.findIndex(function (agendaTelefonica) {
-      return agendaTelefonica.nombre === contacto;
     });
-  
-    if (idUser > -1) {
-      let validar = confirm("Está seguro que quiere eliminar el usuario?");
-  
-      if (validar) {
-        agendaTelefonica.splice(idUser, 1);
-        localStorage.setItem("contactos", JSON.stringify(agendaTelefonica));
-        console.log("El usuario ha sido borrado");
-      }
+    if (existe){
+        console.log(`${nombre} se encuentra en la posición ${agenda.indexOf(existe)} sus contactos`);
     } else {
-      console.warn("El usuario no existe");
+        console.log('El contacto no existe');
+    }
+}
+
+function eliminarContacto(){
+    nombre = prompt('Nombre del contacto a eliminar').toUpperCase().trim()
+    let eliminar = agenda.find(function(contacto){
+        return contacto.nombre === nombre
+    });
+    if (eliminar){
+        agenda.splice(agenda.indexOf(eliminar), 1)
+        localStorage.setItem('contactos', JSON.stringify(agenda));
+    } else {
+        console.log('El contacto no existe');
     }
 }
 
 
-
-// function eliminarContacto(nombre = prompt('Ingrese el nombre de el contacto que desea eliminar').toUpperCase()){
-//     let contact = agendaTelefonica.find(function(contacto){
-//         return contacto.nombre === nombre
-//     })
-//     if(contact){
-//         if (window.confirm(`Esta seguro que desea eliminar ${nombre}`)){
-//             agendaTelefonica.splice(agendaTelefonica.indexOf(nombre), 1);
-//             document.write(`${nombre} fue eliminado correctamente`)
-//             localStorage.removeItem(agendaTelefonica.indexOf(nombre))
-//             } else {
-//             document.write(`${nombre} no fue eliminado`)
-//             }
-//         } else {
-//             document.write(`El contacto ${nombre} no existe`)
-//         }
-// }
-
-//Agenda llena
-
-function agendaLlena(){
-    if (agendaTelefonica.length <=10){
-        console.log(`Su agenda no esta llena`)
-    }else {
-        console.log('La agenda está llena')
-    }
-}
-
-//Huecos libres
-
-function huecosLibres(){
-    if (agendaTelefonica.length <=10){
-        console.log(`puede agendar ${10 - agendaTelefonica.length} contactos`)
-    }else {
-        console.log('Usted no posee espacio en su agenda')
-    }
-}
